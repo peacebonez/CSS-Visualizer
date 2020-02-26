@@ -1,0 +1,54 @@
+<html>
+
+<head>
+</head>
+
+<body style="background:hsl(0, 100%, 50%), rgba(0,0,0,0.8)">
+
+
+    <script>
+
+
+            let bodyMain = document.body;
+            let hue = 1;
+            let light = 50;
+            let flagHue = true;
+            let flagLight = true;
+            let trigger;
+
+            //triggers the interval
+            let colorincrement = () => trigger = setInterval(colorFunc, 75) //adjust time here
+
+            function colorFunc() {
+                // min and max values of hue
+                if (hue === 360 || hue === 0) flagHue = !flagHue;
+
+                if (flagHue) {
+                    hue += 0.5;
+                    console.log('Hue up:', hue);
+                } else {
+                    hue -= 0.5
+                    console.log('Hue down:' ,hue);
+                }
+
+                if (light < 1 || light > 99) flagLight = !flagLight;
+
+                if (flagLight) {
+                    light += 0.10;
+                    console.log('Light up:', Math.round(light));
+                } else {
+                    light -= 0.10;
+                    console.log("Light down:", Math.round(light));
+                }
+
+                bodyMain.style.background = `hsl(${hue}, 50%, ${light}%)`; // very "Recessy like the drink"
+                // bodyMain.style.background = `hsl(${hue}, 100%, ${light}%)`; // Neon
+                // bodyMain.style.background = `hsl(${hue}, 50%, ${light}%)`; // Balance between the 2
+            };
+
+            colorincrement();
+            
+    </script>
+</body>
+
+</html>
